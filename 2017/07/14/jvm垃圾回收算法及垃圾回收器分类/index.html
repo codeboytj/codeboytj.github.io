@@ -3,14 +3,24 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档 | Hexo</title>
+    <title>jvm垃圾回收算法及垃圾回收器分类 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+    <meta name="description" content="前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^">
+<meta name="keywords" content="java,jvm,gc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm垃圾回收算法及垃圾回收器分类">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^">
+<meta property="og:image" content="http://yoursite.com/img/jvm垃圾回收算法.jpg">
+<meta property="og:image" content="http://yoursite.com/img/jvm垃圾回收器分类1.jpg">
+<meta property="og:image" content="http://yoursite.com/img/jvm垃圾回收器分类2.jpg">
+<meta property="og:image" content="http://yoursite.com/img/支付宝支付.png">
+<meta property="og:updated_time" content="2017-07-17T16:25:48.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="jvm垃圾回收算法及垃圾回收器分类">
+<meta name="twitter:description" content="前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^">
+<meta name="twitter:image" content="http://yoursite.com/img/jvm垃圾回收算法.jpg">
     
 
     
@@ -179,61 +189,21 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-jvm垃圾回收算法及垃圾回收器分类" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/07/17/java-util-concurrent中的那些类/">java.util.concurrent中的那些类</a>
+        <h1 class="article-title" itemprop="name">
+            jvm垃圾回收算法及垃圾回收器分类
         </h1>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/17/java-util-concurrent中的那些类/">
-            <time datetime="2017-07-17T15:54:02.000Z" itemprop="datePublished">2017-07-17</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/java/">java</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/java/多线程/">多线程</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/多线程/">多线程</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/">jvm垃圾回收算法及垃圾回收器分类</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/">
@@ -242,23 +212,133 @@
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/java/">java</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/java/jvm/">jvm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/java/jvm/gc/">gc</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/gc/">gc</a>, <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/jvm/">jvm</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^</p>
+<a id="more"></a>
+<h2 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h2><p><img src="/img/jvm垃圾回收算法.jpg" alt="jvm垃圾回收算法"></p>
+<h2 id="垃圾回收器分类"><a href="#垃圾回收器分类" class="headerlink" title="垃圾回收器分类"></a>垃圾回收器分类</h2><p><img src="/img/jvm垃圾回收器分类1.jpg" alt="jvm垃圾回收器分类1"><br><img src="/img/jvm垃圾回收器分类2.jpg" alt="jvm垃圾回收器分类2"></p>
+<h2 id="下面更精彩"><a href="#下面更精彩" class="headerlink" title="下面更精彩"></a>下面更精彩</h2><p><link rel="stylesheet" type="text/css" href="/css/pageFooter.css"></p>
+<p><br><img src="/img/支付宝支付.png" alt="支付宝赞助二维码"><br></p><br><p style="margin-top: 0.4em; text-align: center"><b style="font-size: 1em;">未经授权，禁止转载</b></p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/" data-id="cj58cixrq000aet0a6w2rvspn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/17/java-util-concurrent中的那些类/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    java.util.concurrent中的那些类
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
+
+    
+</article>
+
+
+    
 </section>
             
                 
@@ -395,7 +475,9 @@
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'http://yoursite.com/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/';
+        
+        this.page.identifier = 'jvm垃圾回收算法及垃圾回收器分类';
     };
     (function() { 
         var d = document, s = d.createElement('script');  

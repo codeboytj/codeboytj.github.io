@@ -1,0 +1,6 @@
+* {box-sizing: border-box;}
+.row .col {
+  width: 50%;
+  border: 10px solid #fff;
+}
+
