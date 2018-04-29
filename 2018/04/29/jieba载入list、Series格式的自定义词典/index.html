@@ -3,23 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>jvm垃圾回收算法及垃圾回收器分类 | Hexo</title>
+    <title>jieba载入list、DataFrame以及Series格式的自定义词典 | Hexo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^">
-<meta name="keywords" content="java,jvm,gc">
+    <meta name="description" content="pandas提供的表格数据形式非常方便，现在想将pandas的Series中的数据批量添加到jieba的自定义词典，但是jieba没有提供这样的方法，所以想看看有没有什么好方法来插入。">
+<meta name="keywords" content="文本挖掘">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jvm垃圾回收算法及垃圾回收器分类">
-<meta property="og:url" content="http://yoursite.com/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/index.html">
+<meta property="og:title" content="jieba载入list、DataFrame以及Series格式的自定义词典">
+<meta property="og:url" content="http://yoursite.com/2018/04/29/jieba载入list、Series格式的自定义词典/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^">
-<meta property="og:image" content="http://yoursite.com/img/jvm垃圾回收算法.jpg">
-<meta property="og:image" content="http://yoursite.com/img/jvm垃圾回收器分类1.jpg">
-<meta property="og:image" content="http://yoursite.com/img/jvm垃圾回收器分类2.jpg">
-<meta property="og:updated_time" content="2018-04-04T13:09:08.763Z">
+<meta property="og:description" content="pandas提供的表格数据形式非常方便，现在想将pandas的Series中的数据批量添加到jieba的自定义词典，但是jieba没有提供这样的方法，所以想看看有没有什么好方法来插入。">
+<meta property="og:updated_time" content="2018-04-29T04:09:23.998Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jvm垃圾回收算法及垃圾回收器分类">
-<meta name="twitter:description" content="前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^">
-<meta name="twitter:image" content="http://yoursite.com/img/jvm垃圾回收算法.jpg">
+<meta name="twitter:title" content="jieba载入list、DataFrame以及Series格式的自定义词典">
+<meta name="twitter:description" content="pandas提供的表格数据形式非常方便，现在想将pandas的Series中的数据批量添加到jieba的自定义词典，但是jieba没有提供这样的方法，所以想看看有没有什么好方法来插入。">
     
 
     
@@ -188,7 +184,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-jvm垃圾回收算法及垃圾回收器分类" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-jieba载入list、Series格式的自定义词典" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -196,7 +192,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            jvm垃圾回收算法及垃圾回收器分类
+            jieba载入list、DataFrame以及Series格式的自定义词典
         </h1>
     
 
@@ -205,22 +201,17 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/">
-            <time datetime="2017-07-14T15:39:55.000Z" itemprop="datePublished">2017-07-14</time>
+        <a href="/2018/04/29/jieba载入list、Series格式的自定义词典/">
+            <time datetime="2018-04-29T03:47:08.000Z" itemprop="datePublished">2018-04-29</time>
         </a>
     </div>
 
 
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/java/">java</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/java/jvm/">jvm</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/java/jvm/gc/">gc</a>
-    </div>
-
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/gc/">gc</a>, <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/jvm/">jvm</a>
+        <a class="tag-link" href="/tags/文本挖掘/">文本挖掘</a>
     </div>
 
                     </div>
@@ -231,10 +222,20 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>前段时间仔细学习了一些jvm垃圾回收的东东，做了一些笔记，拿出来分享，^_^</p>
+            <p>pandas提供的表格数据形式非常方便，现在想将pandas的Series中的数据批量添加到jieba的自定义词典，但是jieba没有提供这样的方法，所以想看看有没有什么好方法来插入。</p>
 <a id="more"></a>
-<h2 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h2><p><img src="/img/jvm垃圾回收算法.jpg" alt="jvm垃圾回收算法"></p>
-<h2 id="垃圾回收器分类"><a href="#垃圾回收器分类" class="headerlink" title="垃圾回收器分类"></a>垃圾回收器分类</h2><p><img src="/img/jvm垃圾回收器分类1.jpg" alt="jvm垃圾回收器分类1"><br><img src="/img/jvm垃圾回收器分类2.jpg" alt="jvm垃圾回收器分类2"></p>
+<h2 id="jieba载入自定义词典的方法"><a href="#jieba载入自定义词典的方法" class="headerlink" title="jieba载入自定义词典的方法"></a>jieba载入自定义词典的方法</h2><p>jieba是优秀的中文分词工具，它提供了两个载入自定义词典的方法：</p>
+<ol>
+<li>add_word()方法</li>
+<li>load_userdict()方法</li>
+</ol>
+<h3 id="add-word"><a href="#add-word" class="headerlink" title="add_word()"></a>add_word()</h3><p>这个方法用于在程序中动态载入分词，一次处理一个词语，源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">def add_word(self, word, freq=None, tag=None):</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    Add a word to dictionary.</div><div class="line">    freq and tag can be omitted, freq defaults to be a calculated value</div><div class="line">    that ensures the word can be cut out.</div><div class="line">    &quot;&quot;&quot;</div><div class="line">    self.check_initialized()</div><div class="line">    word = strdecode(word)</div><div class="line">    freq = int(freq) if freq is not None else self.suggest_freq(word, False)</div><div class="line">    self.FREQ[word] = freq</div><div class="line">    self.total += freq</div><div class="line">    if tag:</div><div class="line">	self.user_word_tag_tab[word] = tag</div><div class="line">    for ch in xrange(len(word)):</div><div class="line">	wfrag = word[:ch + 1]</div><div class="line">	if wfrag not in self.FREQ:</div><div class="line">	    self.FREQ[wfrag] = 0</div><div class="line">    if freq == 0:</div><div class="line">	finalseg.add_force_split(word)</div></pre></td></tr></table></figure>
+<p>可以看到，jieba将词语添加到self.FREQ这个字典里面，达到添加自定义词语的目的。而且通过<code>for ch in xrange(len(word))</code>插入了多个词语，如add_word(“清华大学”)，会插入“清”、“清华”、“清华大”以及“清华大学”</p>
+<h3 id="load-userdict"><a href="#load-userdict" class="headerlink" title="load_userdict()"></a>load_userdict()</h3><p>这个方法从文件中载入词语，然后通过<code>add_word</code>方法载入到自定义词典，源码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">def load_userdict(self, f):</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    Load personalized dict to improve detect rate.</div><div class="line">    Parameter:</div><div class="line">	- f : A plain text file contains words and their ocurrences.</div><div class="line">	      Can be a file-like object, or the path of the dictionary file,</div><div class="line">	      whose encoding must be utf-8.</div><div class="line">    Structure of dict file:</div><div class="line">    word1 freq1 word_type1</div><div class="line">    word2 freq2 word_type2</div><div class="line">    ...</div><div class="line">    Word type may be ignored</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    self.check_initialized()</div><div class="line">    if isinstance(f, string_types):</div><div class="line">	f_name = f</div><div class="line">	f = open(f, &apos;rb&apos;)</div><div class="line">    else:</div><div class="line">	f_name = resolve_filename(f)</div><div class="line">    for lineno, ln in enumerate(f, 1):</div><div class="line">	line = ln.strip()</div><div class="line">	if not isinstance(line, text_type):</div><div class="line">	    try:</div><div class="line">		line = line.decode(&apos;utf-8&apos;).lstrip(&apos;\ufeff&apos;)</div><div class="line">	    except UnicodeDecodeError:</div><div class="line">		raise ValueError(&apos;dictionary file %s must be utf-8&apos; % f_name)</div><div class="line">	if not line:</div><div class="line">	    continue</div><div class="line">	# match won&apos;t be None because there&apos;s at least one character</div><div class="line">	word, freq, tag = re_userdict.match(line).groups()</div><div class="line">	if freq is not None:</div><div class="line">	    freq = freq.strip()</div><div class="line">	if tag is not None:</div><div class="line">	    tag = tag.strip()</div><div class="line">	self.add_word(word, freq, tag)</div></pre></td></tr></table></figure>
+<p>可以看到对于文件中的每一行，<code>load_userdict</code>都调用<code>add_word</code>方法载入，其实就是使用了循环将文件中的词语添加到自定义词典罢了。</p>
+<h2 id="将list、DataFrame以及Series的数据载入自定义词典"><a href="#将list、DataFrame以及Series的数据载入自定义词典" class="headerlink" title="将list、DataFrame以及Series的数据载入自定义词典"></a>将list、DataFrame以及Series的数据载入自定义词典</h2><p>从jieba的load_userdict方法使用的载词方式，可以看出，想要从list、DataFrame以及Series的数据载入自定义词典，只能和<code>load_userdict</code>方法一样，循环调用<code>add_word</code>方法了。笑死。</p>
 
         
         </div>
@@ -281,25 +282,20 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 </div>
 
             
+    
+        <a href="http://yoursite.com/2018/04/29/jieba载入list、Series格式的自定义词典/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2018/04/29/jieba载入list、Series格式的自定义词典/">评论</a>
+    
+
         </footer>
     </div>
     
         
 <nav id="article-nav">
     
-        <a href="/2017/07/17/java-util-concurrent中的那些类/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    java.util.concurrent中的那些类
-                
-            </div>
-        </a>
     
-    
-        <a href="/2017/06/30/第一篇博客/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/11/03/纪念长航进百度/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">第一篇博客</div>
+            <div class="article-nav-title">纪念长航进百度</div>
         </a>
     
 </nav>
@@ -310,6 +306,14 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
 
 
     
+    
+        <section id="comments">
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+    
+
 </section>
             
                 
@@ -503,13 +507,13 @@ window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMin
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://yoursite.com/2017/07/14/jvm垃圾回收算法及垃圾回收器分类/';
+            this.page.url = 'http://yoursite.com/2018/04/29/jieba载入list、Series格式的自定义词典/';
         
-        this.page.identifier = 'jvm垃圾回收算法及垃圾回收器分类';
+        this.page.identifier = 'jieba载入list、Series格式的自定义词典';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
